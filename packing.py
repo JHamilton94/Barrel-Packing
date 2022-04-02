@@ -4,37 +4,37 @@
 import math
 
 #Given the number of barrels their radius and the dimensions of the hold, returns the percentage of broken stowage
-def brokenStowage(barrelRadius, totalBarrels, holdWidth, holdHeight):
+def brokenStowage(barrelRadius, totalBarrels, holdWidth, holdLength):
 
   barrelArea = math.pi*(barrelRadius**2)
-  holdArea = holdWidth*holdHeight
+  holdArea = holdWidth*holdLength
   barrelTotalArea = barrelArea*totalBarrels
 
   #If no barrels, broken stowage is the area of the hold
   if totalBarrels == 0:
     return 1
 
-  brokenStowage = holdArea/barrelTotalArea
+  brokenStowage = 1-(barrelTotalArea/holdArea)
 
-  return (brokenStowage/holdArea)*100
+  return brokenStowage*100
 
 #Given the radius of the barrels and the dimensions of the hold, returns the number of barrels that can be stored with simple packing
-def simplePacking(barrelRadius, holdWidth, holdHeight):
+def simplePacking(barrelRadius, holdWidth, holdLength):
 
   #Simple Packing
   barrelDiameter = 2*barrelRadius
   horizontalBarrels = int(holdWidth/barrelDiameter)
-  verticalBarrels = int(holdHeight/barrelDiameter)
+  verticalBarrels = int(holdLength/barrelDiameter)
   barrelTotal = horizontalBarrels*verticalBarrels
   return barrelTotal
 
 #Given the radius of the barrels and the dimensions of the hold, returns the number of barrels that can be stored with condensed packing
-def condensedPacking(barrelRadius, holdWidth, holdHeight):
+def condensedPacking(barrelRadius, holdWidth, holdLength):
 
-  #Hold height should always be the smallest of the two values, this ensures barrels are lined along longest side
-  if holdHeight > holdWidth:
-    temp = holdHeight
-    holdHeight = holdWidth
+  #Hold length should always be the smallest of the two values, this ensures barrels are lined along longest side
+  if holdLength > holdWidth:
+    temp = holdLength
+    holdLength = holdWidth
     holdWidth = temp
 
   #Condensed Packing
@@ -45,9 +45,9 @@ def condensedPacking(barrelRadius, holdWidth, holdHeight):
 
   evenRowBarrelNum = 0
 
-  if holdHeight == barrelDiameter:
+  if holdLength == barrelDiameter:
     return oddRowBarrelNum
-  if holdHeight <= barrelDiameter:
+  if holdLength <= barrelDiameter:
     return 0
 
   if oddRowBarrelRemainder >= 0.5:
@@ -58,14 +58,14 @@ def condensedPacking(barrelRadius, holdWidth, holdHeight):
   doubleRowHeight = ((2+math.sqrt(3))*barrelRadius)
 
 
-  totalDoubleRows = int(holdHeight/doubleRowHeight)
+  totalDoubleRows = int(holdLength/doubleRowHeight)
 
   evenRowAdditionalHeight = doubleRowHeight-barrelDiameter
 
   barrelTotal = totalDoubleRows*(evenRowBarrelNum + oddRowBarrelNum)
 
   #Check if room for an additional even row
-  if holdHeight-(totalDoubleRows*doubleRowHeight) >= evenRowAdditionalHeight:
+  if holdLength-(totalDoubleRows*doubleRowHeight) >= evenRowAdditionalHeight:
     barrelTotal+=evenRowBarrelNum
 
   return barrelTotal
