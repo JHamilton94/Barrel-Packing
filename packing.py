@@ -7,7 +7,6 @@ import math
 def brokenStowage(barrelRadius, totalBarrels, holdWidth, holdHeight):
 
   barrelArea = math.pi*(barrelRadius**2)
-  print(barrelArea)
   holdArea = holdWidth*holdHeight
   barrelTotalArea = barrelArea*totalBarrels
 
