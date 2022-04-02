@@ -3,6 +3,16 @@
 #Barrel Packing Algorithms
 import math
 
+#Given the number of barrels their radius and the dimensions of the hold, returns the percentage of broken stowage
+def brokenStowage(barrelRadius, totalBarrels, holdWidth, holdHeight):
+  barrelArea = math.pi*(barrelRadius**2)
+  holdArea = holdWidth*holdHeight
+  barrelTotalArea = barrelArea*totalBarrels
+  brokenStowage = holdArea/barrelTotalArea
+
+  return (brokenStowage/holdArea)*100
+
+#Given the radius of the barrels and the dimensions of the hold, returns the number of barrels that can be stored with simple packing
 def simplePacking(barrelRadius, holdWidth, holdHeight):
 
   #Simple Packing
@@ -12,6 +22,7 @@ def simplePacking(barrelRadius, holdWidth, holdHeight):
   barrelTotal = horizontalBarrels*verticalBarrels
   return barrelTotal
 
+#Given the radius of the barrels and the dimensions of the hold, returns the number of barrels that can be stored with condensed packing
 def condensedPacking(barrelRadius, holdWidth, holdHeight):
 
   #Condensed Packing
