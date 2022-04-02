@@ -1,5 +1,5 @@
 # Barrel-Packing
-A short python script to determine whether simple or condensed packing is more efficient to load barrels in a hold. <br> <br>
+A short python script that, given the dimensions of a hold, determines whether simple or condensed packing is more efficient. <br> <br>
 ![An example of simple and condensed packing](SimpleCondensed.png)
 
 ## Running the Script
