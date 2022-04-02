@@ -3,7 +3,7 @@ A short python script to determine whether simple or condensed packing is more e
 ![An example of simple and condensed packing](SimpleCondensed.png)
 
 ## Running the Script
-```python simpleOrCondensed.py X Y Z```
+```python packHold.py X Y Z```
 <br>
 <br>
 **X:** The radius of the barrels to be packed <br>
