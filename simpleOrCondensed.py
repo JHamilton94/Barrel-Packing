@@ -14,5 +14,5 @@ brokenStowageCP = packing.brokenStowage(BARRELRADIUS, barrelTotalCP, HOLDWIDTH, 
 
 print("With simple packing the hold can carry {a} barrels".format(a=barrelTotalSP))
 print("Simple packing has a broken stowage percentage of: {a}%".format(a=round(brokenStowageSP, 4)))
-print("With condensed packing hte hold can carry {a} barrels.".format(a=barrelTotalCP))
+print("With condensed packing the hold can carry {a} barrels.".format(a=barrelTotalCP))
 print("Condensed packing has a broken stowage percentage of: {a}%".format(a=round(brokenStowageCP, 4)))
